@@ -1226,6 +1226,7 @@ static const struct gpu_description gpu_description_table[] =
     {HW_VENDOR_NVIDIA,     CARD_NVIDIA_GEFORCE_9800GT,     "NVIDIA GeForce 9800 GT",           DRIVER_NVIDIA_GEFORCE8,  512 },
     {HW_VENDOR_NVIDIA,     CARD_NVIDIA_GEFORCE_210,        "NVIDIA GeForce 210",               DRIVER_NVIDIA_GEFORCE8,  512 },
     {HW_VENDOR_NVIDIA,     CARD_NVIDIA_GEFORCE_GT220,      "NVIDIA GeForce GT 220",            DRIVER_NVIDIA_GEFORCE8,  512 },
+    {HW_VENDOR_NVIDIA,     CARD_NVIDIA_GEFORCE_GT230_V2,   "NVIDIA GeForce GT 230 V2",         DRIVER_NVIDIA_GEFORCE8,  1536},
     {HW_VENDOR_NVIDIA,     CARD_NVIDIA_GEFORCE_GT240,      "NVIDIA GeForce GT 240",            DRIVER_NVIDIA_GEFORCE8,  512 },
     {HW_VENDOR_NVIDIA,     CARD_NVIDIA_GEFORCE_GTX260,     "NVIDIA GeForce GTX 260",           DRIVER_NVIDIA_GEFORCE8,  1024},
     {HW_VENDOR_NVIDIA,     CARD_NVIDIA_GEFORCE_GTX275,     "NVIDIA GeForce GTX 275",           DRIVER_NVIDIA_GEFORCE8,  896 },
@@ -1762,6 +1763,7 @@ cards_nvidia_binary[] =
     {"GTX 275",                     CARD_NVIDIA_GEFORCE_GTX275},    /* Geforce 200 - midend high */
     {"GTX 260",                     CARD_NVIDIA_GEFORCE_GTX260},    /* Geforce 200 - midend */
     {"GT 240",                      CARD_NVIDIA_GEFORCE_GT240},     /* Geforce 200 - midend */
+    {"GT 230 V2",                   CARD_NVIDIA_GEFORCE_GT230_V2},  /* Geforce 200 - mid-lowend */
     {"GT 220",                      CARD_NVIDIA_GEFORCE_GT220},     /* Geforce 200 - lowend */
     {"GeForce 310",                 CARD_NVIDIA_GEFORCE_210},       /* Geforce 200 - lowend */
     {"GeForce 305",                 CARD_NVIDIA_GEFORCE_210},       /* Geforce 200 - lowend */
@@ -2083,6 +2085,7 @@ cards_nvidia_mesa[] =
     {"NVAA",                        CARD_NVIDIA_GEFORCE_8200},      /* 8100 */
     {"NVA8",                        CARD_NVIDIA_GEFORCE_210},
     {"NVA5",                        CARD_NVIDIA_GEFORCE_GT220},
+    {"NV92",                        CARD_NVIDIA_GEFORCE_GT230_V2},
     {"NVA3",                        CARD_NVIDIA_GEFORCE_GT240},
     {"NVA0",                        CARD_NVIDIA_GEFORCE_GTX280},
     {"NV98",                        CARD_NVIDIA_GEFORCE_9200},
