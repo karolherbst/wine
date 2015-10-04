@@ -323,6 +323,7 @@ struct x11drv_thread_data
     void    *xi2_devices;          /* list of XInput2 devices (valid when state is enabled) */
     int      xi2_device_count;
     int      xi2_core_pointer;     /* XInput2 core pointer id */
+    char     last_dead_key;        /* last dead key from ToUnicodeEx */
 };
 
 extern struct x11drv_thread_data *x11drv_init_thread_data(void) DECLSPEC_HIDDEN;

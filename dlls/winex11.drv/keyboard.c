@@ -2638,9 +2638,22 @@ INT CDECL X11DRV_ToUnicodeEx(UINT virtKey, UINT scanCode, const BYTE *lpKeyState
 	dead_char = KEYBOARD_MapDeadKeysym(keysym);
 	if (dead_char)
         {
-	    MultiByteToWideChar(CP_UNIXCP, 0, &dead_char, 1, bufW, bufW_size);
-	    ret = -1;
-            goto found;
+                if(x11drv_thread_data()->last_dead_key == 0)
+                {
+                        MultiByteToWideChar(CP_UNIXCP, 0, &dead_char, 1, bufW, bufW_size);
+                        x11drv_thread_data()->last_dead_key = dead_char;
+                        ret = -1;
+                        TRACE("saving last dead_char: %c", dead_char);
+                        goto found;
+                }
+                else
+                {
+                        TRACE("combining last dead_char: %c with: %c", x11drv_thread_data()->last_dead_key, dead_char);
+                        MultiByteToWideChar(CP_UNIXCP, 0, &x11drv_thread_data()->last_dead_key, 1, bufW, bufW_size);
+                        MultiByteToWideChar(CP_UNIXCP, 0, &dead_char, 1, bufW + 1, bufW_size - 1);
+                        ret = 2;
+                        goto found;
+                }
         }
 
         if (keysym >= 0x01000100 && keysym <= 0x0100ffff)
@@ -2739,6 +2752,10 @@ INT CDECL X11DRV_ToUnicodeEx(UINT virtKey, UINT scanCode, const BYTE *lpKeyState
     }
 
 found:
+    /* reset last dead key */
+    if (ret != -1)
+        x11drv_thread_data()->last_dead_key = 0;
+
     if (buf != lpChar)
         HeapFree(GetProcessHeap(), 0, lpChar);
 
