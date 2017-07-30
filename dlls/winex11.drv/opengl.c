@@ -756,12 +756,6 @@ static BOOL WINAPI init_opengl( INIT_ONCE *once, void *param, void **context )
         pglXQueryRendererStringMESA = pglXGetProcAddressARB( (const GLubyte *)"glXQueryRendererStringMESA" );
     }
 
-    if (has_extension( WineGLInfo.glxExtensions, "GLX_OML_sync_control" ))
-    {
-        pglXWaitForSbcOML = pglXGetProcAddressARB( (const GLubyte *)"glXWaitForSbcOML" );
-        pglXSwapBuffersMscOML = pglXGetProcAddressARB( (const GLubyte *)"glXSwapBuffersMscOML" );
-    }
-
     X11DRV_WineGL_LoadExtensions();
     init_pixel_formats( gdi_display );
     return TRUE;
